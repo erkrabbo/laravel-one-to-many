@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row">
         <h2>{{ $post->title }}</h2>
+        <b>{{ $post->user->name }}</b> - <b>{{ $post->user->userInfo->phone }}</b>
         <p>{{ $post->content }}</p>
     </div>
     @auth
