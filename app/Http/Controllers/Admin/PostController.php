@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 
+use Illuminate\Support\Facades\Auth;
+
 class PostController extends Controller
 {
     public function __construct()
@@ -47,6 +49,18 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::paginate(20);
+
+        return view('index', compact('posts'));
+    }
+
+    /**
+     * Display a listing of the resource for the logged user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function myindex() {
+        $posts = Post::where('user_id', Auth::user()->id)->paginate(20);
 
         return view('index', compact('posts'));
     }
@@ -96,6 +110,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        if (Auth::user()->id !== $post->user_id) abort(403);
+
         return view('admin.post.edit', compact('post'));
     }
 
@@ -108,6 +124,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        if (Auth::user()->id !== $post->user_id) abort(403);
+
         $request->validate($this->getValidators($post));
 
         $post->update($request->all());
@@ -123,6 +141,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if (Auth::user()->id !== $post->user_id) abort(403);
+
         $post->delete();
 
         return redirect()->route('post.index');

@@ -23,6 +23,8 @@ Auth::routes();
 Route::post('/slugger', 'Admin\PostController@slugger')
     ->name('slugger');
 
+Route::get('my-posts', 'Admin\PostController@myindex')->name('myindex');
+
 Route::resource('/post', 'Admin\PostController');
 
 

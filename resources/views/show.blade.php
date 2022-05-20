@@ -7,6 +7,7 @@
         <p>{{ $post->content }}</p>
     </div>
     @auth
+        @if(Auth::user()->id == $post->user->id)
         <div class="d-flex justify-content-end align-items-center">
             <a href="{{route('post.edit', $post )}}" class="btn btn-warning btn-sm mx-2">EDIT</a>
             <button id="modalToggler" type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">
@@ -35,6 +36,7 @@
                 </div>
             </div>
         </div>
+        @endif
     @endauth
 </div>
 @endsection
