@@ -52,6 +52,8 @@
                                     <a href="{{route('myindex')}}" class="btn my-2 dropdown-item bg-primary">MY POSTS</a>
                                     <a href="{{route('post.create')}}" class="btn my-2 dropdown-item bg-success">CREATE NEW POST</a>
 
+                                    <hr class="dropdown-divider">
+
                                     <a class="btn my-2 dropdown-item bg-danger" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
