@@ -39,30 +39,32 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @auth
+                    <!-- Authentication Links -->
+                    @auth
+                        <ul class="navbar-nav ms-auto">
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                <div class="dropdown-menu p-2 text-center" aria-labelledby="navbarDropdown">
+
+                                    <a href="{{route('myindex')}}" class="btn my-2 dropdown-item bg-primary">MY POSTS</a>
+                                    <a href="{{route('post.create')}}" class="btn my-2 dropdown-item bg-success">CREATE NEW POST</a>
+
+                                    <a class="btn my-2 dropdown-item bg-danger" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
-                                    <a href="{{route('post.create')}}" class="btn btn-success btn-sm mx-2">CREATE NEW POST</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
-                        @endauth
-                    </ul>
+                        </ul>
+                    @endauth
                 </div>
             </div>
         </nav>
