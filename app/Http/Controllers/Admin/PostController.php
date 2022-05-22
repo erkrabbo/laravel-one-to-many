@@ -145,6 +145,6 @@ class PostController extends Controller
 
         $post->delete();
 
-        return redirect()->route('myindex');
+       return url()->previous() === route('post.show', $post) ? redirect()->route('myindex') : redirect()->back();
     }
 }

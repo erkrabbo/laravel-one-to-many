@@ -66,6 +66,8 @@
                                 </div>
                             </li>
                         </ul>
+                    @else
+                        <a href="{{route('login')}}" class="btn my-2 ms-auto bg-dark text-white">Login</a>
                     @endauth
                 </div>
             </div>
