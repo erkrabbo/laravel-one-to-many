@@ -13,19 +13,17 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('home');
-});
 
 Auth::routes();
 
 
 Route::post('/slugger', 'Admin\PostController@slugger')
-    ->name('slugger');
+->name('slugger');
 
 Route::get('my-posts', 'Admin\PostController@myindex')->name('myindex');
 
-Route::resource('/post', 'Admin\PostController');
+Route::get('/', 'Admin\PostController@index')->name('home');
+Route::resource('/post', 'Admin\PostController')->except('index');
 
 
 

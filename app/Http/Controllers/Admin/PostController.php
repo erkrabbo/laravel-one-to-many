@@ -145,6 +145,6 @@ class PostController extends Controller
 
         $post->delete();
 
-        return redirect()->route('post.index');
+        return redirect()->route('myindex');
     }
 }
