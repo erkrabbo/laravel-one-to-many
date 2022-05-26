@@ -6,6 +6,7 @@ use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -41,7 +42,9 @@ class PostController extends Controller
 
     public function index()
     {
-        return view('guests.index');
+        $posts = Post::paginate(20);
+
+        return Auth::user() ? view('index', compact('posts')) : view('guests.index');
     }
 
     /**
