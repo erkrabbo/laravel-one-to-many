@@ -22,7 +22,7 @@ Route::post('/slugger', 'Admin\PostController@slugger')
 
 Route::get('my-posts', 'Admin\PostController@myindex')->name('myindex');
 
-Route::get('/', 'Admin\PostController@index')->name('home');
+Route::get('/', 'Api\PostController@index')->name('home');
 Route::resource('/post', 'Admin\PostController')->except('index');
 
 
